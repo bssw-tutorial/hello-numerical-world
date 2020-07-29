@@ -22,7 +22,7 @@ is known as the _Diffusion Equation_ and also the [_Heat Equation_](https://en.w
 
 ### Simplifying Assumptions
 
-To make the problem tractable for this lesson, we make some simplifying assumptions...
+To make the problem tractable for this lesson, we make some simplifying assumptions:
 
 1. The thermal diffusivity, ![](http://latex.codecogs.com/gif.latex?%5Calpha),
    is constant for all _space_ and _time_.
