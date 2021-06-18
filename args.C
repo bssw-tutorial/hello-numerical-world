@@ -81,8 +81,8 @@ process_args(int argc, char **argv)
     HANDLE_ARG(prec, char*, %s, precision half|float|double|quad);
     HANDLE_ARG(alpha, double, %g, material thermal diffusivity (sq-meters/second));
     HANDLE_ARG(lenx, double, %g, material length (meters));
-    HANDLE_ARG(dx, double, %g, x-incriment. Best if lenx/dx==int. (meters));
-    HANDLE_ARG(dt, double, %g, t-incriment (seconds));
+    HANDLE_ARG(dx, double, %g, x-increment. Best if lenx/dx==int. (meters));
+    HANDLE_ARG(dt, double, %g, t-increment (seconds));
     HANDLE_ARG(maxt, double, %g, >0:max sim time (seconds) | <0:min l2 change in soln);
     HANDLE_ARG(bc0, double, %g, boundary condition @ x=0: u(0,t) (Kelvin));
     HANDLE_ARG(bc1, double, %g, boundary condition @ x=lenx: u(lenx,t) (Kelvin));
