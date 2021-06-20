@@ -55,7 +55,6 @@ extern Double bc0;
 extern Double bc1;
 extern Double min_change;
 extern char const *runame;
-extern char const *prec;
 extern char const *ic;
 extern char const *alg;
 extern int savi;
@@ -78,7 +77,6 @@ process_args(int argc, char **argv)
         fprintf(stderr, "Usage: ./heat <arg>=<value> <arg>=<value>...\n");
 
     HANDLE_ARG(runame, char*, %s, name to give run and results dir);
-    HANDLE_ARG(prec, char*, %s, precision half|float|double|quad);
     HANDLE_ARG(alpha, double, %g, material thermal diffusivity (sq-meters/second));
     HANDLE_ARG(lenx, double, %g, material length (meters));
     HANDLE_ARG(dx, double, %g, x-incriment. Best if lenx/dx==int. (meters));

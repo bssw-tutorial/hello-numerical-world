@@ -13,7 +13,6 @@ int outi         = 100;
 int save         = 0;
 char const *runame = "heat_results";
 char const *alg  = "ftcs";
-char const *prec = "double";
 char const *ic   = "const(1)";
 Double lenx      = 1.0;
 Double alpha     = 0.2;
@@ -91,8 +90,8 @@ initialize(void)
     if (save)
     {
         exact = new Double[Nx]();
-        change_history = new Double[Nx]();
-        error_history = new Double[Nx]();
+        change_history = new Double[Nt]();
+        error_history = new Double[Nt]();
     }
 
     assert(strncmp(alg, "ftcs", 4)==0 ||
@@ -117,8 +116,8 @@ int finalize(int ti, Double maxt, Double change)
     write_array(TFINAL, Nx, dx, curr);
     if (save)
     {
-        write_array(RESIDUAL, ti, dt, change_history);
-        write_array(ERROR, ti, dt, error_history);
+        write_array(RESIDUAL, ti < Nt ? ti : Nt, dt, change_history);
+        write_array(ERROR, ti < Nt ? ti : Nt, dt, error_history);
     }
 
     if (outi)
@@ -134,7 +133,6 @@ int finalize(int ti, Double maxt, Double change)
     if (error_history) delete [] error_history;
     if (cn_Amat) delete [] cn_Amat;
     if (strncmp(alg, "ftcs", 4)) free((void*)alg);
-    if (strncmp(prec, "double", 6)) free((void*)prec);
     if (strncmp(ic, "const(1)", 8)) free((void*)ic);
 
     return retval;
@@ -168,7 +166,7 @@ update_output_files(int ti)
         write_array(ti, Nx, dx, curr);
 
     change = l2_norm(Nx, curr, last);
-    if (save)
+    if (save && ti < Nt)
     {
         change_history[ti] = change;
         error_history[ti] = l2_norm(Nx, curr, exact);
