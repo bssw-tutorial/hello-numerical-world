@@ -5,5 +5,5 @@ cd build
 cmake -DCMAKE_INSTALL_PREFIX=$inst ..
 make -j
 
-cd tests && ctest
+(cd tests && ctest)
 make install
